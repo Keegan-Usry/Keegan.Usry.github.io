@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Projects • Keegan Usry</title>
+  <link rel="icon" href="favicon.ico">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="wrap nav" aria-label="Main navigation">
+      <div class="brand"><a href="index.html" style="color:inherit;text-decoration:none">Keegan Usry</a></div>
+      <a class="tab active" href="projects.html">Projects</a>
+      <a class="tab" href="skills.html">Skills</a>
+      <a class="tab" href="experience.html">Experience</a>
+      <a class="tab" href="resume.html">Resume</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <section class="card">
+        <h2>Projects</h2>
+
+        <!-- Project 1 -->
+        <article class="card">
+          <h3>Resource Manager Load Testing</h3>
+          <p class="muted">Java • JMeter • k6 • PCTE</p>
+          <ul>
+            <li>Designed production-like scenarios; identified bottlenecks at 1.8× expected load.</li>
+            <li>Added CI smoke tests; cut regression time by 70%.</li>
+          </ul>
+          <!-- Image slots -->
+          <div class="proj-gallery">
+            <img class="proj-img" src="images/pcte-load-thumb-1.jpg"
+                 data-full="images/pcte-load-full-1.jpg"
+                 alt="Load testing dashboard with throughput and latency" loading="lazy">
+            <img class="proj-img" src="images/pcte-load-thumb-2.jpg"
+                 data-full="images/pcte-load-full-2.jpg"
+                 alt="Failure rate and response time under spike test" loading="lazy">
+          </div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="card">
+          <h3>Manufacturing Time-Study Automation</h3>
+          <p class="muted">Python • Pandas • Matplotlib</p>
+          <ul>
+            <li>Automated cycle-time analysis for 20+ parts; +12% throughput.</li>
+            <li>Dashboards guided fixture redesign and operator training.</li>
+          </ul>
+          <!-- Image slots -->
+          <div class="proj-gallery">
+            <img class="proj-img" src="images/timestudy-thumb-1.jpg"
+                 data-full="images/timestudy-full-1.jpg"
+                 alt="Cycle time dashboard overview" loading="lazy">
+            <img class="proj-img" src="images/timestudy-thumb-2.jpg"
+                 data-full="images/timestudy-full-2.jpg"
+                 alt="Bottleneck analysis chart" loading="lazy">
+          </div>
+        </article>
+
+      </section>
+    </div>
+  </main>
+
+  <footer><div class="wrap">© <span id="y"></span> Keegan Usry.</div></footer>
+
+  <!-- Lightbox overlay -->
+  <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-label="Image preview">
+    <button data-close aria-label="Close preview">✕</button>
+    <img src="" alt="">
+  </div>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+    (function(){
+      const lb = document.getElementById('lightbox');
+      const lbImg = lb.querySelector('img');
+      function openLightbox(src, alt){
+        lbImg.src = src; lbImg.alt = alt || '';
+        lb.classList.add('open'); lb.setAttribute('aria-hidden','false');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeLightbox(){
+        lb.classList.remove('open'); lb.setAttribute('aria-hidden','true');
+        lbImg.src = ''; document.body.style.overflow = '';
+      }
+      document.addEventListener('click', (e) => {
+        const img = e.target.closest('.proj-img');
+        if (!img) return;
+        openLightbox(img.dataset.full || img.src, img.alt);
+      });
+      lb.addEventListener('click', (e) => {
+        if (e.target === lb || e.target.hasAttribute('data-close')) closeLightbox();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && lb.classList.contains('open')) closeLightbox();
+      });
+    })();
+  </script>
+</body>
+</html>
