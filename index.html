@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>YOUR NAME • Engineer Portfolio</title>
+  <meta name="description" content="Portfolio of YOUR NAME — Mechanical/Software Engineer. Projects, experience, skills, and contact.">
+  <link rel="icon" href="favicon.ico">
+  <style>
+    /* Minimal modern CSS (no frameworks) */
+    :root {
+      --bg: #0f172a;       /* slate-900 */
+      --card: #111827;     /* gray-900 */
+      --text: #e5e7eb;     /* gray-200 */
+      --muted: #94a3b8;    /* slate-400 */
+      --accent: #38bdf8;   /* sky-400 */
+      --soft: #1f2937;     /* gray-800 */
+      --ring: rgba(56,189,248,.3);
+      --maxw: 980px;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin:0; padding:0; background:var(--bg); color:var(--text); font:16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    header, main, footer { width:100%; display:flex; justify-content:center; }
+    .wrap { width:100%; max-width: var(--maxw); padding: 20px; }
+    .nav { display:flex; gap:16px; align-items:center; justify-content:flex-end; padding:16px 0; }
+    .nav a { padding:8px 12px; border-radius:8px; background:transparent; }
+    .nav a:focus { outline: 2px solid var(--ring); outline-offset: 2px; }
+    .hero { display:grid; gap:24px; padding: 40px 0 20px; align-items:center; grid-template-columns: 1fr; }
+    @media(min-width: 840px){ .hero { grid-template-columns: 2fr 1fr; } }
+    .card { background: var(--card); border:1px solid var(--soft); border-radius:16px; padding:24px; }
+    .btn { display:inline-block; background: var(--accent); color:#001018; font-weight:600; padding:10px 14px; border-radius:10px; text-decoration:none; }
+    .btn:hover { filter: brightness(1.05); text-decoration:none; }
+    h1 { margin:0 0 8px; font-size: clamp(28px, 4vw, 40px); line-height:1.1; }
+    h2 { margin:0 0 12px; font-size: clamp(20px, 2.8vw, 28px); line-height:1.2; }
+    h3 { margin:0 0 6px; font-size: 18px; }
+    p { margin: 8px 0 0; color: var(--text); }
+    .muted { color: var(--muted); }
+    .grid { display:grid; gap:16px; grid-template-columns: 1fr; }
+    @media(min-width: 720px){ .grid { grid-template-columns: 1fr 1fr; } }
+    .tag { display:inline-block; padding:4px 8px; border-radius:999px; background:#0b1220; border:1px solid var(--soft); color: var(--muted); font-size: 12px; margin-right:8px; }
+    .list { display:grid; gap:12px; margin-top:8px; }
+    .avatar { width: 140px; height: 140px; border-radius: 14px; background:#0b1220; border:1px solid var(--soft); }
+    footer { padding: 40px 0; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav" aria-label="Main navigation">
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+      <a class="btn" href="YOUR_RESUME.pdf" target="_blank" rel="noopener">Resume</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <section class="hero">
+        <div class="card">
+          <h1>YOUR NAME</h1>
+          <p class="muted">Mechanical/Software Engineer • Orlando, FL</p>
+          <p>Engineer focused on <strong>reliable systems</strong>, <strong>clean code</strong>, and <strong>measurable impact</strong>.
+             I build and analyze solutions across <strong>CAD/Manufacturing</strong>, <strong>Java/Spring</strong>, and <strong>Python</strong>.</p>
+          <p style="margin-top:14px;">
+            <a class="btn" href="#projects">View Projects</a>
+            &nbsp;&nbsp;<a href="https://www.linkedin.com/in/YOUR_LINKEDIN" target="_blank" rel="noopener">LinkedIn</a>
+            &nbsp;•&nbsp;<a href="https://github.com/YOUR_GITHUB" target="_blank" rel="noopener">GitHub</a>
+          </p>
+        </div>
+        <div class="card" style="display:flex; align-items:center; justify-content:center;">
+          <!-- Replace with your photo (upload headshot.jpg to repo) -->
+          <img class="avatar" src="headshot.jpg" alt="Portrait of YOUR NAME">
+        </div>
+      </section>
+
+      <section id="projects" class="card" aria-labelledby="projects-title">
+        <h2 id="projects-title">Projects</h2>
+        <div class="grid">
+          <article class="card">
+            <h3>Resource Manager Load Testing</h3>
+            <p class="muted">Java • JMeter • K6 • PCTE</p>
+            <ul class="list">
+              <li>Designed scenarios to emulate production traffic; uncovered bottlenecks at 1.8× expected load.</li>
+              <li>Implemented CI smoke tests; reduced regression time by 70%.</li>
+            </ul>
+            <p><a href="https://github.com/YOUR_GITHUB/PROJECT_REPO" target="_blank" rel="noopener">Code</a></p>
+          </article>
+
+          <article class="card">
+            <h3>Manufacturing Time-Study Automation</h3>
+            <p class="muted">Python • Pandas • Matplotlib</p>
+            <ul class="list">
+              <li>Automated cycle-time analysis for 20+ parts; identified 12% throughput gain.</li>
+              <li>Generated dashboards; informed fixture redesign and operator training.</li>
+            </ul>
+            <p><a href="https://github.com/YOUR_GITHUB/ANOTHER_REPO" target="_blank" rel="noopener">Code</a></p>
+          </article>
+        </div>
+      </section>
+
+      <section id="experience" class="card" aria-labelledby="exp-title">
+        <h2 id="exp-title">Experience</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Manufacturing Engineering Intern — DMC</h3>
+            <p class="muted">May 2025 – Present • Orlando, FL</p>
+            <ul class="list">
+              <li>Executed 40+ ECOs; drove continuous improvement.</li>
+              <li>Cross-functional with QA/Production to streamline workflows.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Software (PCTE) — Cole Engineering</h3>
+            <p class="muted">2025 • Orlando, FL</p>
+            <ul class="list">
+              <li>Built API tests and load test spike; improved reliability posture.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills" class="card" aria-labelledby="skills-title">
+        <h2 id="skills-title">Skills</h2>
+        <p>
+          <span class="tag">Java</span>
+          <span class="tag">Spring Boot</span>
+          <span class="tag">Python</span>
+          <span class="tag">Git</span>
+          <span class="tag">AutoCAD</span>
+          <span class="tag">GD&T</span>
+          <span class="tag">JMeter</span>
+          <span class="tag">Linux</span>
+        </p>
+      </section>
+
+      <section id="contact" class="card" aria-labelledby="contact-title">
+        <h2 id="contact-title">Contact</h2>
+        <p>Email: <a href="mailto:YOUR_EMAIL">YOUR_EMAIL</a></p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/YOUR_LINKEDIN" target="_blank" rel="noopener">YOUR_LINKEDIN</a></p>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap muted">
+      © <span id="y"></span> YOUR NAME. Built with GitHub Pages.
+    </div>
+  </footer>
+
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>
