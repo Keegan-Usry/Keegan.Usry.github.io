@@ -1,123 +1,326 @@
-/* =========================
-   Global Variables
-   ========================= */
+/* ===============================
+   Keegan Usry • Clean Light Theme
+   Off-white background, black text
+   =============================== */
+
+/* ---- Theme tokens (grayscale only) ---- */
 :root {
-  --bg: #f8f9fa;       /* background (off-white) */
-  --soft: #dcdcdc;     /* subtle borders/lines */
-  --text: #212529;     /* main text (black/near-black) */
-  --muted: #6c757d;    /* muted/secondary text */
-  --accent: #0d6efd;   /* primary accent (blue) */
-  --accent2: #20c997;  /* secondary accent (teal) */
-  --accent3: #fd7e14;  /* optional accent (orange) */
-  --card-bg: #ffffff;  /* white for card backgrounds */
+  --bg: #f7f7f8;         /* page background (off-white) */
+  --card-bg: #ffffff;    /* cards */
+  --ink: #111111;        /* primary text (near-black) */
+  --ink-2: #2b2b2b;      /* headings / brand */
+  --ink-3: #444444;      /* secondary text */
+  --ink-4: #666666;      /* muted text */
+  --line: #dddddf;       /* borders / dividers */
+  --line-2: #cccccf;     /* stronger border */
+  --hover-bg: #f0f0f2;   /* hover surfaces */
+  --shadow: 0 2px 6px rgba(17,17,17,0.06);
+  --shadow-lg: 0 10px 24px rgba(17,17,17,0.10);
+  --radius: 14px;
+  --radius-sm: 10px;
+  --wrap: 980px;
 }
 
-/* =========================
-   Base Styles
-   ========================= */
-body {
+/* ---- Reset / base ---- */
+* { box-sizing: border-box; }
+html, body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  background-color: var(--bg);
-  color: var(--text);
-  line-height: 1.6;
+  padding: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
-
-/* =========================
-   Navigation
-   ========================= */
-nav {
-  background-color: var(--accent);
-  padding: 1rem;
-  text-align: center;
-}
-
-nav a {
-  color: #ffffff;
-  margin: 0 1rem;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-nav a:hover {
-  color: var(--accent2); /* teal hover */
-}
-
-/* =========================
-   Cards / Containers
-   ========================= */
-.card {
-  background-color: var(--card-bg);
-  border: 1px solid var(--soft);
-  border-radius: 8px;
-  padding: 1.5rem;
-  margin: 1rem auto;
-  max-width: 900px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-}
-
-.card h3 {
-  margin-top: 0;
-  color: var(--accent);
-}
-
-.card ul {
-  padding-left: 1.25rem;
-}
-
-/* =========================
-   Text
-   ========================= */
-.muted {
-  color: var(--muted);
-  font-size: 0.9em;
-}
+img { max-width: 100%; display: block; }
 
 a {
-  color: var(--accent);
+  color: var(--ink-2);
+  text-decoration: none;
+  transition: color .15s ease, opacity .15s ease;
+}
+a:hover { color: var(--ink); }
+
+/* ---- Global layout ---- */
+header, main, footer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.wrap {
+  width: 100%;
+  max-width: var(--wrap);
+  padding: 20px;
+  margin: 0 auto;
 }
 
-a:hover {
-  color: var(--accent3); /* orange hover */
+/* ===============================
+   Top Navigation (tabs with personality)
+   =============================== */
+.nav {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 14px 0;
+  position: sticky;
+  top: 0;
+  backdrop-filter: saturate(180%) blur(6px);
+  background: color-mix(in srgb, var(--bg) 88%, white 12%);
+  border-bottom: 1px solid var(--line);
+  z-index: 50;
 }
 
-/* =========================
+.nav .brand {
+  margin-right: auto;
+  font-weight: 800;
+  letter-spacing: .2px;
+  color: var(--ink-2);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+}
+.nav .brand::before{
+  content: "◆";
+  font-size: 12px;
+  color: var(--ink-3);
+  opacity: .75;
+}
+.nav .brand:hover{
+  background: var(--hover-bg);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow);
+}
+
+/* Tabs (links) */
+.tab {
+  --pad-x: 14px;
+  --pad-y: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: var(--pad-y) var(--pad-x);
+  border-radius: 999px;              /* pill look */
+  border: 1px solid var(--line);
+  color: var(--ink-3);
+  background: #fff;                  /* subtle chip */
+  box-shadow: 0 1px 0 rgba(17,17,17,0.04);
+  position: relative;
+  transition: transform .15s ease, box-shadow .15s ease, background .15s ease, color .15s ease, border-color .15s ease;
+}
+.tab:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow);
+  color: var(--ink-2);
+  border-color: var(--line-2);
+}
+
+/* Underline accent on hover/focus */
+.tab::after {
+  content: "";
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 6px;
+  height: 2px;
+  background: var(--ink-3);
+  border-radius: 2px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .2s ease;
+  opacity: .6;
+}
+.tab:hover::after,
+.tab:focus-visible::after { transform: scaleX(1); }
+
+/* Active tab: stronger fill but still grayscale */
+.tab.active {
+  background: var(--hover-bg);
+  color: var(--ink-2);
+  border-color: var(--line-2);
+  box-shadow: var(--shadow);
+}
+
+/* Keyboard focus */
+.tab:focus-visible, .brand:focus-visible {
+  outline: 2px solid var(--ink-3);
+  outline-offset: 2px;
+}
+
+/* ===============================
+   Sections & Cards
+   =============================== */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 24px;
+  margin: 16px 0;
+  box-shadow: var(--shadow);
+}
+
+h1 { margin: 0 0 8px; font-size: clamp(28px, 4vw, 42px); line-height: 1.1; color: var(--ink-2); }
+h2 { margin: 0 0 12px; font-size: clamp(20px, 2.5vw, 28px); color: var(--ink-2); }
+h3 { margin: 0 0 8px; font-size: 18px; color: var(--ink-2); }
+p  { margin: 8px 0 0; color: var(--ink); }
+.muted { color: var(--ink-4); }
+
+.hero {
+  display: grid;
+  gap: 24px;
+  padding: 40px 0 20px;
+  grid-template-columns: 1fr;       /* mobile */
+}
+@media (min-width: 840px){
+  .hero { grid-template-columns: 2fr 1fr; } /* desktop */
+}
+
+/* Sub-cards inside grids (e.g., skill/experience columns) */
+.card .card {
+  border-radius: 12px;
+  border-color: var(--line);
+  box-shadow: none;
+  background: #fff;
+}
+
+/* Divider */
+.section-divider{
+  height:1px; background: var(--line); border:0; margin: 24px 0;
+}
+
+/* ===============================
+   Buttons (for Resume / CTAs)
+   =============================== */
+.btn {
+  display: inline-block;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink-2);
+  font-weight: 600;
+  transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+}
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow);
+  background: var(--hover-bg);
+}
+
+/* ===============================
+   Skill Badges (unfilled chips)
+   =============================== */
+.badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  font-size: 12px;
+  border-radius: 999px;
+  border: 1px solid var(--line-2); /* outline only */
+  background: transparent;         /* unfilled */
+  color: var(--ink-3);
+  transition: background .15s ease, border-color .15s ease, color .15s ease, transform .15s ease;
+}
+.badge::before{
+  content: "";
+  width: 6px; height: 6px;
+  border: 1px solid var(--line-2);
+  border-radius: 50%;
+  background: #fff;
+}
+.badge:hover {
+  background: var(--hover-bg);
+  border-color: var(--line);
+  color: var(--ink-2);
+  transform: translateY(-1px);
+}
+
+/* ===============================
    Images
-   ========================= */
+   =============================== */
 .avatar {
-  width: 66%;             /* takes up 2/3 of card width */
-  aspect-ratio: 1/1;      /* keeps it square */
-  border-radius: 50%;     /* circular */
-  object-fit: cover;      /* avoids distortion */
-  border: 2px solid var(--soft);
-  display: block;
-  margin: 0 auto;         /* center it */
+  width: 66%;              /* roughly 2/3 of its card */
+  aspect-ratio: 1 / 1;     /* square */
+  border-radius: 50%;      /* circular */
+  object-fit: cover;
+  border: 2px solid var(--line);
+  margin: 0 auto;          /* centered in its card */
+  box-shadow: var(--shadow);
 }
 
-.proj-img {
+.proj-img{
   width: 100%;
   max-height: 300px;
   object-fit: cover;
-  border-radius: 6px;
-  margin: 1rem 0;
-  cursor: pointer;
-  transition: transform 0.2s ease;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  margin-top: 12px;
+  cursor: zoom-in;
+  transition: transform .18s ease, box-shadow .18s ease;
+  box-shadow: 0 1px 0 rgba(17,17,17,0.04);
 }
-
-.proj-img:hover {
+.proj-img:hover{
   transform: scale(1.02);
+  box-shadow: var(--shadow-lg);
 }
 
-/* =========================
-   Responsive
-   ========================= */
-@media (max-width: 768px) {
-  nav a {
-    display: inline-block;
-    margin: 0.5rem;
-  }
-  .avatar {
-    width: 80%;
-  }
+/* Project galleries (2-up on wide screens) */
+.proj-gallery{
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 720px){
+  .proj-gallery{ grid-template-columns: 1fr 1fr; }
+}
+
+/* ===============================
+   Lightbox (for project images)
+   =============================== */
+.lightbox{
+  position: fixed; inset: 0;
+  display: none;
+  align-items: center; justify-content: center;
+  background: rgba(0,0,0,.9);
+  padding: 24px; z-index: 9999;
+}
+.lightbox.open{ display: flex; }
+.lightbox img{
+  max-width: 95vw; max-height: 95vh;
+  width: auto; height: auto;
+  border-radius: 12px;
+  box-shadow: var(--shadow-lg);
+}
+.lightbox button[data-close]{
+  position: absolute; top: 14px; right: 16px;
+  font-size: 28px; line-height: 1;
+  background: transparent; border: none; color: #fff; cursor: pointer;
+}
+
+/* ===============================
+   Tables (if needed later)
+   =============================== */
+table { width: 100%; border-collapse: collapse; }
+th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); color: var(--ink); }
+th { color: var(--ink-3); font-weight: 600; }
+
+/* ===============================
+   Footer
+   =============================== */
+footer { padding: 40px 0; color: var(--ink-4); }
+
+/* ===============================
+   Responsive tweaks
+   =============================== */
+@media (max-width: 840px){
+  .avatar { width: 78%; }
+}
+@media (max-width: 520px){
+  .nav { flex-wrap: wrap; gap: 8px; }
+  .nav .brand { margin-bottom: 6px; }
 }
