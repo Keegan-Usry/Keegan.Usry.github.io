@@ -3,11 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Keegan Usry • Engineer Portfolio</title>
-  <meta name="description" content="Portfolio of Keegan Usry — Mechanical Engineering Student. Projects, experience, skills, and contact.">
+  <title>YOUR NAME • Engineer Portfolio</title>
+  <meta name="description" content="Portfolio of YOUR NAME — Mechanical/Software Engineer. Projects, experience, skills, and contact.">
   <link rel="icon" href="favicon.ico">
   <style>
-    /* Minimal modern CSS (no frameworks) */
     :root {
       --bg: #0f172a;       /* slate-900 */
       --card: #111827;     /* gray-900 */
@@ -43,6 +42,47 @@
     .list { display:grid; gap:12px; margin-top:8px; }
     .avatar { width: 140px; height: 140px; border-radius: 14px; background:#0b1220; border:1px solid var(--soft); }
     footer { padding: 40px 0; }
+
+    /* === Lightbox & project images === */
+    .proj-img {
+      width: 100%;
+      max-height: 260px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-top: 12px;
+      cursor: zoom-in;
+      border: 1px solid var(--soft);
+    }
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,.9);
+      padding: 24px;
+      z-index: 9999;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img {
+      max-width: 95vw;
+      max-height: 95vh;
+      width: auto;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.6);
+    }
+    .lightbox button[data-close]{
+      position: absolute;
+      top: 14px;
+      right: 16px;
+      font-size: 28px;
+      line-height: 1;
+      background: transparent;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -60,19 +100,17 @@
     <div class="wrap">
       <section class="hero">
         <div class="card">
-          <h1>Keegan Usry</h1>
-          <p class="muted">Mechanical Engineering Student • Orlando, FL</p>
-          <p>I aim to design and improve critical systems that advance defense, transportation, life-saving technologies. 
-            Through <strong>CAD innovation</strong>, data-driven <strong>analysis</strong>, and <strong>cross-functional</strong> collaboration, 
-            I strive to deliver durable, efficient solutions that support complex real-world operations, while continuously learning, leading, and building with purpose.</p>
+          <h1>YOUR NAME</h1>
+          <p class="muted">Mechanical/Software Engineer • Orlando, FL</p>
+          <p>Engineer focused on <strong>reliable systems</strong>, <strong>clean code</strong>, and <strong>measurable impact</strong>.
+             I build and analyze solutions across <strong>CAD/Manufacturing</strong>, <strong>Java/Spring</strong>, and <strong>Python</strong>.</p>
           <p style="margin-top:14px;">
             <a class="btn" href="#projects">View Projects</a>
-            &nbsp;&nbsp;<a href="http://linkedin.com/in/k-usry" target="_blank" rel="noopener">LinkedIn</a>
+            &nbsp;&nbsp;<a href="https://www.linkedin.com/in/YOUR_LINKEDIN" target="_blank" rel="noopener">LinkedIn</a>
             &nbsp;•&nbsp;<a href="https://github.com/YOUR_GITHUB" target="_blank" rel="noopener">GitHub</a>
           </p>
         </div>
         <div class="card" style="display:flex; align-items:center; justify-content:center;">
-          <!-- Replace with your photo (upload headshot.jpg to repo) -->
           <img class="avatar" src="headshot.jpg" alt="Portrait of YOUR NAME">
         </div>
       </section>
@@ -87,7 +125,11 @@
               <li>Designed scenarios to emulate production traffic; uncovered bottlenecks at 1.8× expected load.</li>
               <li>Implemented CI smoke tests; reduced regression time by 70%.</li>
             </ul>
-            <p><a href="https://github.com/YOUR_GITHUB/PROJECT_REPO" target="_blank" rel="noopener">Code</a></p>
+            <img class="proj-img"
+                 src="images/pcte-load-thumb.jpg"
+                 data-full="images/pcte-load-full.jpg"
+                 alt="Load test dashboard screenshot"
+                 loading="lazy">
           </article>
 
           <article class="card">
@@ -97,7 +139,11 @@
               <li>Automated cycle-time analysis for 20+ parts; identified 12% throughput gain.</li>
               <li>Generated dashboards; informed fixture redesign and operator training.</li>
             </ul>
-            <p><a href="https://github.com/YOUR_GITHUB/ANOTHER_REPO" target="_blank" rel="noopener">Code</a></p>
+            <img class="proj-img"
+                 src="images/timestudy-thumb.jpg"
+                 data-full="images/timestudy-full.jpg"
+                 alt="Cycle time dashboard screenshot"
+                 loading="lazy">
           </article>
         </div>
       </section>
@@ -140,7 +186,7 @@
       <section id="contact" class="card" aria-labelledby="contact-title">
         <h2 id="contact-title">Contact</h2>
         <p>Email: <a href="mailto:YOUR_EMAIL">YOUR_EMAIL</a></p>
-        <p>LinkedIn: <a href="http://linkedin.com/in/k-usry" target="_blank" rel="noopener">Keegan Usry</a></p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/YOUR_LINKEDIN" target="_blank" rel="noopener">YOUR_LINKEDIN</a></p>
       </section>
     </div>
   </main>
@@ -151,6 +197,48 @@
     </div>
   </footer>
 
-  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+  <!-- Lightbox overlay -->
+  <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-label="Image preview">
+    <button data-close aria-label="Close preview">✕</button>
+    <img src="" alt="">
+  </div>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    (function(){
+      const lb = document.getElementById('lightbox');
+      const lbImg = lb.querySelector('img');
+
+      function openLightbox(src, alt){
+        lbImg.src = src;
+        lbImg.alt = alt || '';
+        lb.classList.add('open');
+        lb.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeLightbox(){
+        lb.classList.remove('open');
+        lb.setAttribute('aria-hidden', 'true');
+        lbImg.src = '';
+        document.body.style.overflow = '';
+      }
+
+      document.addEventListener('click', (e) => {
+        const img = e.target.closest('.proj-img');
+        if (!img) return;
+        const full = img.dataset.full || img.src;
+        openLightbox(full, img.alt);
+      });
+
+      lb.addEventListener('click', (e) => {
+        if (e.target === lb || e.target.hasAttribute('data-close')) closeLightbox();
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && lb.classList.contains('open')) closeLightbox();
+      });
+    })();
+  </script>
 </body>
 </html>
