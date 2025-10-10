@@ -6,6 +6,10 @@
   <title>Skills & Experience • Keegan Usry</title>
   <link rel="icon" href="favicon.ico">
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* optional, for a subtle divider between sections */
+    .section-divider{height:1px;background:var(--soft);margin:24px 0;border:0}
+  </style>
 </head>
 <body>
   <header>
@@ -19,17 +23,19 @@
 
   <main>
     <div class="wrap">
-      <!-- Skills -->
+      <!-- ONE outer card to match other tabs -->
       <section class="card">
-        <h2>Skills</h2>
-        <div class="badges">
+        <h2>Skills & Experience</h2>
+
+        <!-- SKILLS (keeps your existing style) -->
+        <div class="badges" style="margin-top:8px">
           <span class="badge">Java</span><span class="badge">Spring Boot</span>
           <span class="badge">Python</span><span class="badge">Git</span>
           <span class="badge">Linux</span><span class="badge">AutoCAD</span>
           <span class="badge">GD&amp;T</span><span class="badge">JMeter</span>
         </div>
 
-        <div class="hero" style="grid-template-columns:1fr 1fr">
+        <div class="hero" style="grid-template-columns:1fr 1fr; margin-top:16px">
           <div class="card">
             <h3>Software</h3>
             <ul>
@@ -47,12 +53,12 @@
             </ul>
           </div>
         </div>
-      </section>
 
-      <!-- Experience -->
-      <section class="card" style="margin-top:16px">
-        <h2>Experience</h2>
-        <div class="hero" style="grid-template-columns:1fr 1fr">
+        <hr class="section-divider">
+
+        <!-- EXPERIENCE (keeps your existing style) -->
+        <h2 style="margin-top:0">Experience</h2>
+        <div class="hero" style="grid-template-columns:1fr 1fr; margin-top:16px">
           <div class="card">
             <h3>Manufacturing Engineering Intern — Daniels Manufacturing Corp.</h3>
             <p class="muted">May 2025 – Present • Orlando, FL</p>
@@ -67,12 +73,12 @@
             <p class="muted">2025 • Orlando, FL</p>
             <ul>
               <li>Built API tests & load-test spike in Persistent Cyber Training Environment.</li>
-              <li>Improved system reliability and performance under load.</li>
+              <li>Improved reliability and performance under load.</li>
             </ul>
           </div>
         </div>
-      </section>
 
+      </section>
     </div>
   </main>
 
