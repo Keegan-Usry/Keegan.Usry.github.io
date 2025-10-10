@@ -1,7 +1,11 @@
-:root{
-  --bg:#0f172a; --card:#111827; --text:#e5e7eb; --muted:#94a3b8;
-  --accent:#38bdf8; --soft:#1f2937; --ring:rgba(56,189,248,.4);
-  --maxw:980px;
+:root {
+  --bg: #f8f9fa;      /* background (off-white) */
+  --soft: #dcdcdc;    /* subtle borders/lines */
+  --text: #212529;    /* main text (near-black) */
+  --muted: #6c757d;   /* muted/secondary text */
+  --accent: #0d6efd;  /* primary accent (blue) */
+  --accent2: #20c997; /* secondary accent (teal) */
+  --accent3: #fd7e14; /* optional accent (orange) */
 }
 *{box-sizing:border-box}
 html,body{margin:0;padding:0;background:var(--bg);color:var(--text);
