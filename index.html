@@ -1,98 +1,77 @@
+:root{
+  --bg:#0f172a; --card:#111827; --text:#e5e7eb; --muted:#94a3b8;
+  --accent:#38bdf8; --soft:#1f2937; --ring:rgba(56,189,248,.4);
+  --maxw:980px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--text);
+  font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+header,main,footer{width:100%;display:flex;justify-content:center}
+.wrap{width:100%;max-width:var(--maxw);padding:20px}
+.nav{display:flex;gap:10px;align-items:center;justify-content:flex-end;padding:14px 0}
+.tab{padding:10px 14px;border-radius:10px;border:1px solid transparent}
+.tab:hover{background:#0b1220;border-color:var(--soft);text-decoration:none}
+.tab.active{background:var(--accent);color:#001018;border-color:transparent}
+.brand{margin-right:auto;font-weight:700;letter-spacing:.2px}
+.card{background:var(--card);border:1px solid var(--soft);border-radius:16px;padding:24px}
+.hero{display:grid;gap:24px;padding:40px 0 20px;grid-template-columns:1fr}
+@media(min-width:840px){.hero{grid-template-columns:2fr 1fr}}
+h1{margin:0 0 8px;font-size:clamp(30px,5vw,44px);line-height:1.1}
+h2{margin:0 0 12px;font-size:clamp(20px,3vw,28px)}
+p{margin:8px 0 0}
+.muted{color:var(--muted)}
+.btn{display:inline-block;background:var(--accent);color:#001018;font-weight:600;
+  padding:10px 14px;border-radius:10px;text-decoration:none}
+.btn:hover{text-decoration:none;filter:brightness(1.05)}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.badge{background:#0b1220;border:1px solid var(--soft);color:var(--muted);
+  border-radius:999px;padding:4px 10px;font-size:12px}
+footer{padding:40px 0;color:var(--muted)}
+.avatar{width:140px;height:140px;border-radius:14px;background:#0b1220;border:1px solid var(--soft)}
+.center{display:flex;align-items:center;justify-content:center}
+
+/* === Project thumbnails + Lightbox (Projects page) === */
+.proj-img{
+  width:100%; max-height:260px; object-fit:cover;
+  border-radius:10px; margin-top:12px; cursor:zoom-in; border:1px solid var(--soft);
+}
+.proj-gallery{ display:grid; gap:12px; grid-template-columns:1fr; }
+@media(min-width:720px){ .proj-gallery{ grid-template-columns:1fr 1fr; } }
+
+.lightbox{
+  position:fixed; inset:0; display:none; align-items:center; justify-content:center;
+  background:rgba(0,0,0,.9); padding:24px; z-index:9999;
+}
+.lightbox.open{ display:flex; }
+.lightbox img{
+  max-width:95vw; max-height:95vh; width:auto; height:auto;
+  border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,.6);
+}
+.lightbox button[data-close]{
+  position:absolute; top:14px; right:16px; font-size:28px; line-height:1;
+  background:transparent; border:none; color:#fff; cursor:pointer;
+}
+
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>YOUR NAME • Engineer Portfolio</title>
-  <meta name="description" content="Portfolio of YOUR NAME — Mechanical/Software Engineer. Projects, experience, skills, and contact.">
+  <title>Keegan Usry • Engineer</title>
+  <meta name="description" content="Portfolio of Keegan Usry — projects, skills, experience, resume.">
   <link rel="icon" href="favicon.ico">
-  <style>
-    :root {
-      --bg: #0f172a;       /* slate-900 */
-      --card: #111827;     /* gray-900 */
-      --text: #e5e7eb;     /* gray-200 */
-      --muted: #94a3b8;    /* slate-400 */
-      --accent: #38bdf8;   /* sky-400 */
-      --soft: #1f2937;     /* gray-800 */
-      --ring: rgba(56,189,248,.3);
-      --maxw: 980px;
-    }
-    * { box-sizing: border-box; }
-    html, body { margin:0; padding:0; background:var(--bg); color:var(--text); font:16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif; }
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    header, main, footer { width:100%; display:flex; justify-content:center; }
-    .wrap { width:100%; max-width: var(--maxw); padding: 20px; }
-    .nav { display:flex; gap:16px; align-items:center; justify-content:flex-end; padding:16px 0; }
-    .nav a { padding:8px 12px; border-radius:8px; background:transparent; }
-    .nav a:focus { outline: 2px solid var(--ring); outline-offset: 2px; }
-    .hero { display:grid; gap:24px; padding: 40px 0 20px; align-items:center; grid-template-columns: 1fr; }
-    @media(min-width: 840px){ .hero { grid-template-columns: 2fr 1fr; } }
-    .card { background: var(--card); border:1px solid var(--soft); border-radius:16px; padding:24px; }
-    .btn { display:inline-block; background: var(--accent); color:#001018; font-weight:600; padding:10px 14px; border-radius:10px; text-decoration:none; }
-    .btn:hover { filter: brightness(1.05); text-decoration:none; }
-    h1 { margin:0 0 8px; font-size: clamp(28px, 4vw, 40px); line-height:1.1; }
-    h2 { margin:0 0 12px; font-size: clamp(20px, 2.8vw, 28px); line-height:1.2; }
-    h3 { margin:0 0 6px; font-size: 18px; }
-    p { margin: 8px 0 0; color: var(--text); }
-    .muted { color: var(--muted); }
-    .grid { display:grid; gap:16px; grid-template-columns: 1fr; }
-    @media(min-width: 720px){ .grid { grid-template-columns: 1fr 1fr; } }
-    .tag { display:inline-block; padding:4px 8px; border-radius:999px; background:#0b1220; border:1px solid var(--soft); color: var(--muted); font-size: 12px; margin-right:8px; }
-    .list { display:grid; gap:12px; margin-top:8px; }
-    .avatar { width: 140px; height: 140px; border-radius: 14px; background:#0b1220; border:1px solid var(--soft); }
-    footer { padding: 40px 0; }
-
-    /* === Lightbox & project images === */
-    .proj-img {
-      width: 100%;
-      max-height: 260px;
-      object-fit: cover;
-      border-radius: 10px;
-      margin-top: 12px;
-      cursor: zoom-in;
-      border: 1px solid var(--soft);
-    }
-    .lightbox {
-      position: fixed;
-      inset: 0;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      background: rgba(0,0,0,.9);
-      padding: 24px;
-      z-index: 9999;
-    }
-    .lightbox.open { display: flex; }
-    .lightbox img {
-      max-width: 95vw;
-      max-height: 95vh;
-      width: auto;
-      height: auto;
-      border-radius: 12px;
-      box-shadow: 0 10px 30px rgba(0,0,0,.6);
-    }
-    .lightbox button[data-close]{
-      position: absolute;
-      top: 14px;
-      right: 16px;
-      font-size: 28px;
-      line-height: 1;
-      background: transparent;
-      border: none;
-      color: #fff;
-      cursor: pointer;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
     <div class="wrap nav" aria-label="Main navigation">
-      <a href="#projects">Projects</a>
-      <a href="#experience">Experience</a>
-      <a href="#skills">Skills</a>
-      <a href="#contact">Contact</a>
-      <a class="btn" href="YOUR_RESUME.pdf" target="_blank" rel="noopener">Resume</a>
+      <div class="brand">Keegan Usry</div>
+      <a class="tab" href="projects.html">Projects</a>
+      <a class="tab" href="skills.html">Skills</a>
+      <a class="tab" href="experience.html">Experience</a>
+      <a class="tab" href="resume.html">Resume</a>
     </div>
   </header>
 
@@ -100,102 +79,102 @@
     <div class="wrap">
       <section class="hero">
         <div class="card">
-          <h1>YOUR NAME</h1>
-          <p class="muted">Mechanical/Software Engineer • Orlando, FL</p>
+          <h1>Keegan Usry</h1>
+          <p class="muted">Mechanical & Software Engineer • Orlando, FL</p>
           <p>Engineer focused on <strong>reliable systems</strong>, <strong>clean code</strong>, and <strong>measurable impact</strong>.
-             I build and analyze solutions across <strong>CAD/Manufacturing</strong>, <strong>Java/Spring</strong>, and <strong>Python</strong>.</p>
+             I design and analyze solutions across <strong>CAD/Manufacturing</strong>, <strong>Java/Spring</strong>, and <strong>Python</strong>.</p>
+          <div class="badges">
+            <span class="badge">Java</span><span class="badge">Spring Boot</span>
+            <span class="badge">Python</span><span class="badge">AutoCAD</span><span class="badge">GD&amp;T</span>
+          </div>
           <p style="margin-top:14px;">
-            <a class="btn" href="#projects">View Projects</a>
-            &nbsp;&nbsp;<a href="https://www.linkedin.com/in/YOUR_LINKEDIN" target="_blank" rel="noopener">LinkedIn</a>
-            &nbsp;•&nbsp;<a href="https://github.com/YOUR_GITHUB" target="_blank" rel="noopener">GitHub</a>
+            <a class="btn" href="projects.html">View Projects</a>
+            &nbsp;&nbsp;<a href="https://www.linkedin.com/in/keeganusry" target="_blank" rel="noopener">LinkedIn</a>
+            &nbsp;•&nbsp;<a href="https://github.com/keeganusry" target="_blank" rel="noopener">GitHub</a>
+            &nbsp;•&nbsp;<a href="mailto:keegan.usry@email.com">Email</a>
           </p>
         </div>
-        <div class="card" style="display:flex; align-items:center; justify-content:center;">
-          <img class="avatar" src="headshot.jpg" alt="Portrait of YOUR NAME">
+        <div class="card center">
+          <img class="avatar" src="headshot.jpg" alt="Portrait of Keegan Usry">
         </div>
-      </section>
-
-      <section id="projects" class="card" aria-labelledby="projects-title">
-        <h2 id="projects-title">Projects</h2>
-        <div class="grid">
-          <article class="card">
-            <h3>Resource Manager Load Testing</h3>
-            <p class="muted">Java • JMeter • K6 • PCTE</p>
-            <ul class="list">
-              <li>Designed scenarios to emulate production traffic; uncovered bottlenecks at 1.8× expected load.</li>
-              <li>Implemented CI smoke tests; reduced regression time by 70%.</li>
-            </ul>
-            <img class="proj-img"
-                 src="images/pcte-load-thumb.jpg"
-                 data-full="images/pcte-load-full.jpg"
-                 alt="Load test dashboard screenshot"
-                 loading="lazy">
-          </article>
-
-          <article class="card">
-            <h3>Manufacturing Time-Study Automation</h3>
-            <p class="muted">Python • Pandas • Matplotlib</p>
-            <ul class="list">
-              <li>Automated cycle-time analysis for 20+ parts; identified 12% throughput gain.</li>
-              <li>Generated dashboards; informed fixture redesign and operator training.</li>
-            </ul>
-            <img class="proj-img"
-                 src="images/timestudy-thumb.jpg"
-                 data-full="images/timestudy-full.jpg"
-                 alt="Cycle time dashboard screenshot"
-                 loading="lazy">
-          </article>
-        </div>
-      </section>
-
-      <section id="experience" class="card" aria-labelledby="exp-title">
-        <h2 id="exp-title">Experience</h2>
-        <div class="grid">
-          <div class="card">
-            <h3>Manufacturing Engineering Intern — DMC</h3>
-            <p class="muted">May 2025 – Present • Orlando, FL</p>
-            <ul class="list">
-              <li>Executed 40+ ECOs; drove continuous improvement.</li>
-              <li>Cross-functional with QA/Production to streamline workflows.</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h3>Software (PCTE) — Cole Engineering</h3>
-            <p class="muted">2025 • Orlando, FL</p>
-            <ul class="list">
-              <li>Built API tests and load test spike; improved reliability posture.</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <section id="skills" class="card" aria-labelledby="skills-title">
-        <h2 id="skills-title">Skills</h2>
-        <p>
-          <span class="tag">Java</span>
-          <span class="tag">Spring Boot</span>
-          <span class="tag">Python</span>
-          <span class="tag">Git</span>
-          <span class="tag">AutoCAD</span>
-          <span class="tag">GD&T</span>
-          <span class="tag">JMeter</span>
-          <span class="tag">Linux</span>
-        </p>
-      </section>
-
-      <section id="contact" class="card" aria-labelledby="contact-title">
-        <h2 id="contact-title">Contact</h2>
-        <p>Email: <a href="mailto:YOUR_EMAIL">YOUR_EMAIL</a></p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/YOUR_LINKEDIN" target="_blank" rel="noopener">YOUR_LINKEDIN</a></p>
       </section>
     </div>
   </main>
 
-  <footer>
-    <div class="wrap muted">
-      © <span id="y"></span> YOUR NAME. Built with GitHub Pages.
+  <footer><div class="wrap">© <span id="y"></span> Keegan Usry.</div></footer>
+  <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+</body>
+</html>
+
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Projects • Keegan Usry</title>
+  <link rel="icon" href="favicon.ico">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="wrap nav" aria-label="Main navigation">
+      <div class="brand"><a href="index.html" style="color:inherit;text-decoration:none">Keegan Usry</a></div>
+      <a class="tab active" href="projects.html">Projects</a>
+      <a class="tab" href="skills.html">Skills</a>
+      <a class="tab" href="experience.html">Experience</a>
+      <a class="tab" href="resume.html">Resume</a>
     </div>
-  </footer>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <section class="card">
+        <h2>Projects</h2>
+
+        <!-- Project 1 -->
+        <article class="card">
+          <h3>Resource Manager Load Testing</h3>
+          <p class="muted">Java • JMeter • k6 • PCTE</p>
+          <ul>
+            <li>Designed production-like scenarios; identified bottlenecks at 1.8× expected load.</li>
+            <li>Added CI smoke tests; cut regression time by 70%.</li>
+          </ul>
+          <!-- Image slots -->
+          <div class="proj-gallery">
+            <img class="proj-img" src="images/pcte-load-thumb-1.jpg"
+                 data-full="images/pcte-load-full-1.jpg"
+                 alt="Load testing dashboard with throughput and latency" loading="lazy">
+            <img class="proj-img" src="images/pcte-load-thumb-2.jpg"
+                 data-full="images/pcte-load-full-2.jpg"
+                 alt="Failure rate and response time under spike test" loading="lazy">
+          </div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="card">
+          <h3>Manufacturing Time-Study Automation</h3>
+          <p class="muted">Python • Pandas • Matplotlib</p>
+          <ul>
+            <li>Automated cycle-time analysis for 20+ parts; +12% throughput.</li>
+            <li>Dashboards guided fixture redesign and operator training.</li>
+          </ul>
+          <!-- Image slots -->
+          <div class="proj-gallery">
+            <img class="proj-img" src="images/timestudy-thumb-1.jpg"
+                 data-full="images/timestudy-full-1.jpg"
+                 alt="Cycle time dashboard overview" loading="lazy">
+            <img class="proj-img" src="images/timestudy-thumb-2.jpg"
+                 data-full="images/timestudy-full-2.jpg"
+                 alt="Bottleneck analysis chart" loading="lazy">
+          </div>
+        </article>
+
+      </section>
+    </div>
+  </main>
+
+  <footer><div class="wrap">© <span id="y"></span> Keegan Usry.</div></footer>
 
   <!-- Lightbox overlay -->
   <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-label="Image preview">
@@ -205,36 +184,26 @@
 
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
-
     (function(){
       const lb = document.getElementById('lightbox');
       const lbImg = lb.querySelector('img');
-
       function openLightbox(src, alt){
-        lbImg.src = src;
-        lbImg.alt = alt || '';
-        lb.classList.add('open');
-        lb.setAttribute('aria-hidden', 'false');
+        lbImg.src = src; lbImg.alt = alt || '';
+        lb.classList.add('open'); lb.setAttribute('aria-hidden','false');
         document.body.style.overflow = 'hidden';
       }
       function closeLightbox(){
-        lb.classList.remove('open');
-        lb.setAttribute('aria-hidden', 'true');
-        lbImg.src = '';
-        document.body.style.overflow = '';
+        lb.classList.remove('open'); lb.setAttribute('aria-hidden','true');
+        lbImg.src = ''; document.body.style.overflow = '';
       }
-
       document.addEventListener('click', (e) => {
         const img = e.target.closest('.proj-img');
         if (!img) return;
-        const full = img.dataset.full || img.src;
-        openLightbox(full, img.alt);
+        openLightbox(img.dataset.full || img.src, img.alt);
       });
-
       lb.addEventListener('click', (e) => {
         if (e.target === lb || e.target.hasAttribute('data-close')) closeLightbox();
       });
-
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && lb.classList.contains('open')) closeLightbox();
       });
@@ -242,3 +211,59 @@
   </script>
 </body>
 </html>
+
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Skills • Keegan Usry</title>
+  <link rel="icon" href="favicon.ico">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="wrap nav" aria-label="Main navigation">
+      <div class="brand"><a href="index.html" style="color:inherit;text-decoration:none">Keegan Usry</a></div>
+      <a class="tab" href="projects.html">Projects</a>
+      <a class="tab active" href="skills.html">Skills</a>
+      <a class="tab" href="experience.html">Experience</a>
+      <a class="tab" href="resume.html">Resume</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <section class="card">
+        <h2>Skills</h2>
+        <div class="badges">
+          <span class="badge">Java</span><span class="badge">Spring Boot</span>
+          <span class="badge">Python</span><span class="badge">Git</span>
+          <span class="badge">Linux</span><span class="badge">AutoCAD</span>
+          <span class="badge">GD&amp;T</span><span class="badge">JMeter</span>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer><div class="wrap">© <span id="y"></span> Keegan Usry.</div></footer>
+  <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+</body>
+</html>
+
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Experience • Keegan Usry</title>
+  <link rel="icon" href="favicon.ico">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="wrap nav" aria-label="Main navigation">
+      <div class="brand"><a href="index.html" style="color:inherit;text-decoration:none">Keegan Usry</a></div>
+      <
