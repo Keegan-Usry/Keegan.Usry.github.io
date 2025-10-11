@@ -18,7 +18,7 @@
   --shadow-lg: 0 10px 24px rgba(17,17,17,0.10);
   --radius: 14px;
   --radius-sm: 10px;
-  --wrap: 980px;
+  --wrap: 1280px;
 }
 
 /* ---- Reset / base ---- */
@@ -157,8 +157,8 @@ header, main, footer {
   background: var(--card-bg);
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  padding: 24px;
-  margin: 16px 0;
+  padding: 28px; /*was24*/
+  margin: 20px 0; /*was 16*/
   box-shadow: var(--shadow);
 }
 
