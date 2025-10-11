@@ -276,7 +276,7 @@ p  { margin: 8px 0 0; color: var(--ink); }
   grid-template-columns: 1fr;
 }
 @media (min-width: 720px){
-  .proj-gallery{ grid-template-columns: 1fr 1fr; }
+  .proj-gallery{ grid-template-columns: 1fr 1fr 1fr; }
 }
 
 /* ===============================
