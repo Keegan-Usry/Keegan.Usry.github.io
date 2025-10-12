@@ -244,14 +244,14 @@ p  { margin: 8px 0 0; color: var(--ink); }
    Images
    =============================== */
 .avatar {
-  width: 66%;              /* roughly 2/3 of its card */
-  aspect-ratio: 1 / 1;     /* square */
-  border-radius: 50%;      /* circular */
-  object-fit: cover;
-  border: 2px solid var(--line);
-  margin: 0 auto;          /* centered in its card */
-  box-shadow: var(--shadow);
+  display: block;
+  margin: 0 auto;           /* centers the image horizontally */
+  width: 100%;              /* makes image fill the card’s width */
+  height: auto;             /* keeps aspect ratio */
+  border-radius: var(--radius); /* same rounded corners as card */
+  object-fit: cover;        /* ensures no stretching */
 }
+
 
 .proj-img{
   width: 100%;
