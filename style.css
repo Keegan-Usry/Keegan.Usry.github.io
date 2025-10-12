@@ -245,13 +245,14 @@ p  { margin: 8px 0 0; color: var(--ink); }
    =============================== */
 .avatar {
   display: block;
-  margin: 0 auto;                /* centers it inside the card */
-  max-width: 85%;                /* slightly larger than now (try 80–90%) */
-  height: auto;                  /* keep full photo, no squish */
-  border-radius: var(--radius);  /* match the card's curved edges */
-  object-fit: contain;           /* show whole photo without cropping */
+  margin: 0 auto;                 /* centers horizontally */
+  width: 80%;                     /* smaller than full card */
+  height: auto;                   /* keep natural aspect ratio */
+  border-radius: var(--radius);   /* same curved edges as card */
+  object-fit: cover;              /* crop nicely if needed */
+  border: 2px solid var(--line);  /* subtle outline */
+  box-shadow: var(--shadow);      /* small shadow */
 }
-
 
 
 
