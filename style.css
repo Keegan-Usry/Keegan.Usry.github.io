@@ -247,7 +247,7 @@ p  { margin: 8px 0 0; color: var(--ink); }
   display: block;
   margin: 0 auto;                 /* centers horizontally */
   width: 80%;                     /* smaller than full card */
-  height: 70%;                   /* keep natural aspect ratio */
+  height: 50%;                   /* keep natural aspect ratio */
   border-radius: var(--radius);   /* same curved edges as card */
   object-fit: cover;              /* crop nicely if needed */
   border: 2px solid var(--line);  /* subtle outline */
