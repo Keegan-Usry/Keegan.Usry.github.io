@@ -246,12 +246,12 @@ p  { margin: 8px 0 0; color: var(--ink); }
 .avatar {
   display: block;
   margin: 0 auto;                 /* centers horizontally */
-  width: 100%;                    /* fill the card width */
-  height: auto;                   /* keep natural ratio */
-  border-radius: var(--radius);   /* same curve as card */
-  object-fit: cover;              /* crop without stretching */
-  border: 2px solid var(--line);  /* optional border */
-  box-shadow: var(--shadow);      /* subtle shadow */
+  width: 80%;                     /* smaller than full card */
+  height: auto;                   /* keep natural aspect ratio */
+  border-radius: var(--radius);   /* same curved edges as card */
+  object-fit: cover;              /* crop nicely if needed */
+  border: 2px solid var(--line);  /* subtle outline */
+  box-shadow: var(--shadow);      /* small shadow */
 }
 
 
