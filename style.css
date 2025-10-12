@@ -245,11 +245,13 @@ p  { margin: 8px 0 0; color: var(--ink); }
    =============================== */
 .avatar {
   display: block;
-  margin: 0 auto;           /* centers the image horizontally */
-  width: 100%;              /* makes image fill the card’s width */
-  height: auto;             /* keeps aspect ratio */
-  border-radius: var(--radius); /* same rounded corners as card */
-  object-fit: cover;        /* ensures no stretching */
+  margin: 0 auto;                 /* centers horizontally */
+  width: 100%;                    /* fill the card width */
+  height: auto;                   /* keep natural ratio */
+  border-radius: var(--radius);   /* same curve as card */
+  object-fit: cover;              /* crop without stretching */
+  border: 2px solid var(--line);  /* optional border */
+  box-shadow: var(--shadow);      /* subtle shadow */
 }
 
 
