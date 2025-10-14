@@ -132,6 +132,57 @@
           </div>
         </article>
 
+        <style>
+    /* Full-page viewer: makes the PDF fill most of the viewport height */
+    .resume-view-wrap { padding-top: 8px; }
+    .resume-frame {
+      width: 100%;
+      height: 88vh;                 /* fill the page */
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fff;
+    }
+    @media (max-width: 840px) {
+      .resume-frame { height: 82vh; }
+    }
+    /* Optional: remove extra spacing above/below the viewer card */
+    .card.flat { box-shadow: none; border: none; padding: 0; margin: 12px 0; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav" aria-label="Main navigation">
+      <div class="brand"><a href="index.html" style="color:inherit;text-decoration:none">Keegan Usry</a></div>
+      <a class="tab" href="projects.html">Projects</a>
+      <a class="tab" href="skills.html">Skills & Experience</a>
+      <a class="tab active" href="resume.html">Resume</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap resume-view-wrap">
+      <!-- Full-height viewer (covers the page) -->
+      <section class="card flat" aria-labelledby="resume-view-title">
+        <h2 id="resume-view-title" class="muted" style="position:absolute; left:-9999px;">Resume Viewer</h2>
+        <!-- OBJECT is widely supported and preserves PDF zoom/controls -->
+        <object class="resume-frame" data="images/Keegan-Usry-Resume-Fall-25.pdf" type="application/pdf">
+          <p>
+            PDF preview unavailable in this browser.
+            <a href="images/Keegan-Usry-Resume-Fall-25.pdf" target="_blank" rel="noopener">Open the resume</a>.
+          </p>
+        </object>
+      </section>
+
+      <!-- Download section below -->
+      <section class="card" aria-labelledby="resume-download-title">
+        <h2 id="resume-download-title">Download</h2>
+        <p class="muted">Prefer a copy? Grab the PDF below.</p>
+        <p>
+          <a class="btn" href="images/Keegan-Usry-Resume-Fall-25.pdf" download>Download PDF</a>
+          &nbsp;&nbsp;
+          <a class="btn" href="images/Keegan-Usry-Resume-Fall-25.pdf" target="_blank" rel="noopener">Open in New Tab</a>
+        </p>
+
          
       </section>
     </div>
