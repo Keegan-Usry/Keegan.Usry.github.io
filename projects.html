@@ -5,317 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Projects • Keegan Usry</title>
   <link rel="icon" href="favicon.ico">
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    
-    :root {
-      --line: #e0e0e0;
-      --text: #333;
-      --muted: #666;
-      --bg: #f9f9f9;
-    }
-    
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-      line-height: 1.6;
-      color: var(--text);
-      background: var(--bg);
-    }
-    
-    header {
-      background: white;
-      border-bottom: 1px solid var(--line);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    
-    .wrap {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-    
-    .nav {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      padding: 15px 20px;
-      flex-wrap: wrap;
-    }
-    
-    .brand {
-      font-weight: 600;
-      font-size: 1.1em;
-      margin-right: auto;
-    }
-    
-    .brand a {
-      color: inherit;
-      text-decoration: none;
-    }
-    
-    .tab {
-      padding: 8px 12px;
-      text-decoration: none;
-      color: var(--text);
-      border-radius: 6px;
-      transition: background 0.2s;
-      font-size: 0.95em;
-    }
-    
-    .tab:hover {
-      background: var(--bg);
-    }
-    
-    .tab.active {
-      background: var(--bg);
-      font-weight: 500;
-    }
-    
-    main {
-      padding: 20px 0;
-    }
-    
-    .card {
-      background: white;
-      border-radius: 12px;
-      padding: 24px;
-      margin-bottom: 24px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    }
-    
-    h2 {
-      font-size: 1.8em;
-      margin-bottom: 24px;
-      color: var(--text);
-    }
-    
-    h3 {
-      font-size: 1.3em;
-      margin-bottom: 8px;
-      color: var(--text);
-    }
-    
-    .muted {
-      color: var(--muted);
-      font-size: 0.9em;
-      margin-bottom: 12px;
-    }
-    
-    ul {
-      list-style: none;
-      padding-left: 0;
-      margin: 16px 0;
-    }
-    
-    li {
-      padding-left: 20px;
-      position: relative;
-      margin-bottom: 12px;
-    }
-    
-    li:before {
-      content: "•";
-      position: absolute;
-      left: 0;
-      color: var(--muted);
-    }
-    
-    strong {
-      color: var(--text);
-      font-weight: 600;
-    }
-    
-    .proj-gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 12px;
-      margin-top: 16px;
-    }
-    
-    .proj-img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    
-    .proj-img:hover {
-      transform: scale(1.02);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    }
-    
-    .btn {
-      display: inline-block;
-      padding: 10px 20px;
-      background: var(--text);
-      color: white;
-      text-decoration: none;
-      border-radius: 6px;
-      transition: opacity 0.2s;
-      margin: 4px;
-    }
-    
-    .btn:hover {
-      opacity: 0.8;
-    }
-    
-    footer {
-      background: white;
-      border-top: 1px solid var(--line);
-      padding: 20px;
-      text-align: center;
-      color: var(--muted);
-      font-size: 0.9em;
-    }
-    
-    .lightbox {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.9);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-      padding: 20px;
-    }
-    
-    .lightbox.open {
-      display: flex;
-    }
-    
-    .lightbox img {
-      max-width: 90%;
-      max-height: 90vh;
-      object-fit: contain;
-      border-radius: 8px;
-    }
-    
-    .lightbox button {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      background: white;
-      border: none;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      font-size: 1.5em;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    
-    .resume-view-wrap { 
-      padding-top: 8px; 
-    }
-    
-    .resume-frame {
-      width: 100%;
-      height: 88vh;
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      background: #fff;
-    }
-    
-    .card.flat { 
-      box-shadow: none; 
-      border: none; 
-      padding: 0; 
-      margin: 12px 0; 
-    }
-    
-    /* Mobile optimizations */
-    @media (max-width: 840px) {
-      .wrap {
-        padding: 0 16px;
-      }
-      
-      .nav {
-        gap: 12px;
-        padding: 12px 16px;
-      }
-      
-      .brand {
-        font-size: 1em;
-      }
-      
-      .tab {
-        padding: 6px 10px;
-        font-size: 0.85em;
-      }
-      
-      .card {
-        padding: 16px;
-        margin-bottom: 16px;
-      }
-      
-      h2 {
-        font-size: 1.5em;
-        margin-bottom: 16px;
-      }
-      
-      h3 {
-        font-size: 1.1em;
-      }
-      
-      .proj-gallery {
-        grid-template-columns: 1fr;
-        gap: 10px;
-      }
-      
-      .proj-img {
-        height: 180px;
-      }
-      
-      .resume-frame { 
-        height: 82vh; 
-      }
-      
-      .btn {
-        display: block;
-        text-align: center;
-        margin: 8px 0;
-      }
-      
-      .lightbox img {
-        max-width: 95%;
-        max-height: 85vh;
-      }
-      
-      .lightbox button {
-        width: 36px;
-        height: 36px;
-        top: 10px;
-        right: 10px;
-      }
-    }
-    
-    @media (max-width: 480px) {
-      .nav {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
-      }
-      
-      .brand {
-        margin-right: 0;
-        margin-bottom: 4px;
-      }
-      
-      .tab {
-        width: 100%;
-        text-align: center;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
@@ -335,7 +25,7 @@
         <!-- Steel Part Design & Testing (DMC) -->
         <article class="card">
           <h3>Steel Part Design & Testing — Daniels Manufacturing Corporation</h3>
-          <p class="muted">CAD 3D/2D • GD&T (ASME Y14.5) • FMEA</p>
+          <p class="muted">CAD 3D/2D • GD&amp;T (ASME Y14.5) • FMEA</p>
           <ul>
             <li>Designed a critical steel component concept-to-creation with 3D models and 2D drawings complete with GD&T per ASME Y14.5</li>
             <li>Ran CAD-based stress analysis and applied FMEA to find failure points, improving reliability by <strong>~30%</strong></li>
@@ -379,6 +69,7 @@
           </div>
         </article>
 
+
            <!-- Load-Bearing Wall Construction (Catalyst Surf Shop) -->
         <article class="card">
           <h3>Load-Bearing Wall Construction — Catalyst Surf Shop</h3>
@@ -392,3 +83,157 @@
             <img class="proj-img" src="images/CATALYST_MIDDLE.JPG" data-full="images/CATALYST_MIDDLE.JPG" alt="In-progress build photo of load-bearing wall" loading="lazy">
             <img class="proj-img" src="images/CATALYST_FINAL.jpg" data-full="images/CATALYST_FINAL.jpg" alt="In-progress build photo of load-bearing wall" loading="lazy">
           </div>
+        </article>
+
+        <!-- Boat GNOR Project -->
+        <article class="card">
+          <h3>Full Mechanical & Electrical System Development – GNOR Project</h3>
+          <p class="muted">Electromechanical Integration • Closed Loop Controls • Testing & Validation • Fabrication</p>
+          <ul>
+            <li>Engineered closed-loop heading control using gyroscope feedback to re-orient after disturbances and verified electronics as a system before hull integration</li>
+            <li>Collaborated on CAD modeling of the hull and mechanical assemblies in Onshape, ensuring dimensional accuracy for motor mounts, rudder linkage, and electronics bay</li>
+          </ul>
+          <div class="proj-gallery">
+            <img class="proj-img" src="images/IMG_2801.jpeg" data-full="images/IMG_2801.jpeg" alt="Time study dashboard highlighting bottlenecks" loading="lazy">
+            <img class="proj-img" src="images/IMG_2802.jpeg" data-full="images/IMG_2802.jpeg" alt="Gantt-style cycle breakdown per operation" loading="lazy">
+            <img class="proj-img" src="images/IMG_2800.jpeg" data-full="images/IMG_2800.jpeg" alt="Gantt-style cycle breakdown per operation" loading="lazy">
+          </div>
+        </article>
+
+       
+        <!-- Indoor Bar -->
+        <article class="card">
+          <h3>Indoor Bar Project — TKE Advisor Board, Inc.</h3>
+          <p class="muted">AutoCAD Fusion • 2D CAD Drafting • Cradle to Grave Project Management • Technical Documentation</p>
+          <ul>
+            <li>Created <strong>2D CAD</strong> production drawings and delivered technical documentation to customer to ensure ease of assembly and construction</li>
+            <li>Produced <strong>drawing sets</strong>, <strong>material lists</strong>, and <strong>risk-mitigation strategies</strong> to ensure optimal product lifecycle</li>
+          </ul>
+          <div class="proj-gallery">
+            <img class="proj-img" src="images/INDOOR_CAD.jpg" data-full="images/INDOOR_CAD.jpg" alt="Time study dashboard highlighting bottlenecks" loading="lazy">
+            <img class="proj-img" src="images/INDOOR_CADMODEL.jpg" data-full="images/INDOOR_CADMODEL.jpg" alt="Gantt-style cycle breakdown per operation" loading="lazy">
+          </div>
+        </article>
+
+         
+
+         <!-- Maze Robot -->
+        <article class="card">
+          <h3>Autonomous Maze Robot — Burnett Honors College</h3>
+          <p class="muted">C+ • CAD • 3D Printing •Control Systems</p>
+          <ul>
+            <li>Utilized <strong>C+ and Arduino</strong> systems to engineer a maze-navigating robot with a sensor-triggered catapult</li>
+            <li>Modeled 3D printed catapult using 3D CAD for optimal performance</li>
+          </ul>
+          <div class="proj-gallery">
+            <img class="proj-img" src="images/CATAPULT_CAD.jpg" data-full="images/CATAPULT_CAD.jpg" alt="Time study dashboard highlighting bottlenecks" loading="lazy">
+            <img class="proj-img" src="images/CATAPULT_CAD2.jpg" data-full="images/CATAPULT_CAD2.jpg" alt="Gantt-style cycle breakdown per operation" loading="lazy">
+            <img class="proj-img" src="images/CATAPULT.jpg" data-full="images/CATAPULT.jpg" alt="Gantt-style cycle breakdown per operation" loading="lazy">
+          </div>
+        </article>
+
+         <!-- Beam analysis - burnett honors -->
+        <!-- Cantilever Beam Stress & Deflection Analysis -->
+        <article class="card">
+          <h3>Cantilever Beam Analysis — Design and Analysis of Machine Components UCF</h3>
+          <p class="muted">ANSYS APDL • Structural Mechanics • Simulation & Analytical Validation</p>
+          <ul>
+            <li>Simulated maximum stress and maximum deflection in ANSYS APDL using material properties.</li>
+            <li>Validated simulation by comparing against closed-form beam theory and calculated % error.</li>
+            <li>Delivered full report and simulation video walkthrough, demonstrating analysis workflow and results.</li>
+          </ul>
+          <div class="proj-gallery">
+            <img class="proj-img" src="images/deformation.jpeg" data-full="images/deformation.jpeg" alt="ANSYS model setup of cantilever beam" loading="lazy">
+            <img class="proj-img" src="images/equivalent.jpeg" data-full="images/equivalent.jpeg" alt="Stress distribution in cantilever beam under 2kN load" loading="lazy">
+            <img class="proj-img" src="images/handcalcs.jpeg" data-full="images/handcalcs.jpeg" alt="Deflection results from ANSYS simulation" loading="lazy">
+          </div>
+        </article>
+
+
+        <style>
+    /* Full-page viewer: makes the PDF fill most of the viewport height */
+    .resume-view-wrap { padding-top: 8px; }
+    .resume-frame {
+      width: 100%;
+      height: 88vh;                 /* fill the page */
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fff;
+    }
+    @media (max-width: 840px) {
+      .resume-frame { height: 82vh; }
+    }
+    /* Optional: remove extra spacing above/below the viewer card */
+    .card.flat { box-shadow: none; border: none; padding: 0; margin: 12px 0; }
+  </style>
+</head>
+<body>
+
+  <main>
+    <div class="wrap resume-view-wrap">
+      <!-- Full-height viewer (covers the page) -->
+      <section class="card flat" aria-labelledby="resume-view-title">
+        <h2 id="resume-view-title" class="muted" style="position:absolute; left:-9999px;">Resume Viewer</h2>
+        <!-- OBJECT is widely supported and preserves PDF zoom/controls -->
+        <object class="resume-frame" data="images/Solidworks_Models.pdf" type="application/pdf">
+          <p>
+            PDF preview unavailable in this browser.
+            <a href="images/Solidworks_Models.pdf" target="_blank" rel="noopener">Open the resume</a>.
+          </p>
+        </object>
+      </section>
+
+      <!-- Download section below -->
+      <section class="card" aria-labelledby="resume-download-title">
+        <h2 id="resume-download-title">Download</h2>
+        <p class="muted">Prefer a copy? Grab the PDF below.</p>
+        <p>
+          <a class="btn" href="images/Solidworks_Models.pdf" download>Download PDF</a>
+          &nbsp;&nbsp;
+          <a class="btn" href="images/Solidworks_Models.pdf" target="_blank" rel="noopener">Open in New Tab</a>
+        </p>
+
+         
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">© <span id="y"></span> Keegan Usry.</div>
+  </footer>
+
+  <!-- Lightbox overlay (single instance for the page) -->
+  <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-label="Image preview">
+    <button data-close aria-label="Close preview">✕</button>
+    <img src="" alt="">
+  </div>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    (function(){
+      const lb = document.getElementById('lightbox');
+      const lbImg = lb.querySelector('img');
+      function openLightbox(src, alt){
+        lbImg.src = src; lbImg.alt = alt||'';
+        lb.classList.add('open'); lb.setAttribute('aria-hidden','false');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeLightbox(){
+        lb.classList.remove('open'); lb.setAttribute('aria-hidden','true');
+        lbImg.src=''; document.body.style.overflow='';
+      }
+      document.addEventListener('click',(e)=>{
+        const img = e.target.closest('.proj-img'); if(!img) return;
+        openLightbox(img.dataset.full || img.src, img.alt);
+      });
+      lb.addEventListener('click',(e)=>{
+        if(e.target===lb || e.target.hasAttribute('data-close')) closeLightbox();
+      });
+      document.addEventListener('keydown',(e)=>{
+        if(e.key==='Escape' && lb.classList.contains('open')) closeLightbox();
+      });
+    })();
+  </script>
+</body>
+</html>
