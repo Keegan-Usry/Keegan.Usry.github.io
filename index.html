@@ -1,55 +1,987 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Keegan Usry • Engineer</title>
-  <meta name="description" content="Portfolio of Keegan Usry — projects, skills, experience, resume.">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Keegan Usry - Mechanical Engineering Portfolio">
+  <title>Keegan Usry | Engineering Portfolio</title>
   <link rel="icon" href="favicon.ico">
-  <link rel="stylesheet" href="style.css">
+
+  <style>
+    :root {
+      --navy: #164a62;
+      --dark: #17354a;
+      --blue: #087a96;
+      --bg: #edf2f3;
+      --white: #f7faf9;
+      --muted: #57717f;
+      --line: #afc6ce;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--dark);
+      font-family: system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* NAVIGATION */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 16px 5%;
+      background: rgba(237,242,243,.96);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(12px);
+    }
+
+    .brand {
+      font-weight: 800;
+      font-size: 15px;
+      letter-spacing: .07em;
+      white-space: nowrap;
+    }
+
+    .brand span { color: var(--blue); }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 22px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    nav a:hover { color: var(--blue); }
+
+    main {
+      max-width: 1300px;
+      margin: auto;
+      padding: 0 5%;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 665px;
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 60px;
+      align-items: center;
+      padding: 90px 0;
+    }
+
+    .eyebrow {
+      color: var(--blue);
+      text-transform: uppercase;
+      letter-spacing: .2em;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    h1 {
+      font-size: clamp(55px, 8vw, 105px);
+      line-height: 1.02;
+      letter-spacing: -.075em;
+      margin: 20px 0;
+    }
+
+    h1 span { color: var(--blue); }
+
+    .hero p {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 570px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 20px;
+      background: var(--dark);
+      color: white;
+      border: 1px solid var(--dark);
+      font-size: 13px;
+      font-weight: 700;
+      transition: .2s;
+    }
+
+    .btn:hover {
+      background: var(--blue);
+      border-color: var(--blue);
+    }
+
+    .btn.outline {
+      background: transparent;
+      color: var(--dark);
+    }
+
+    .btn.outline:hover {
+      background: #dce9ed;
+    }
+
+    /* BLUEPRINT GRAPHIC */
+    .blueprint {
+      min-height: 410px;
+      padding: 25px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      color: #e9f5fa;
+      background-color: var(--navy);
+      background-image:
+        linear-gradient(#ffffff13 1px, transparent 1px),
+        linear-gradient(90deg, #ffffff13 1px, transparent 1px);
+      background-size: 22px 22px;
+      border: 1px solid #7ba4b5;
+      box-shadow: 18px 18px 0 #d0e0e6;
+    }
+
+    .bp-top, .bp-bottom {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 10px;
+      letter-spacing: .12em;
+    }
+
+    .bp-center { text-align: center; }
+
+    .bp-center strong {
+      display: block;
+      font-size: clamp(90px, 12vw, 150px);
+      font-weight: 200;
+      line-height: 1;
+      letter-spacing: -.1em;
+    }
+
+    .bp-center span {
+      display: block;
+      font-size: 13px;
+      letter-spacing: .2em;
+    }
+
+    .bp-bottom {
+      border-top: 1px solid #80aabc;
+      padding-top: 13px;
+    }
+
+    /* SHARED SECTIONS */
+    section.content {
+      padding: 75px 0;
+      border-top: 1px solid var(--line);
+      scroll-margin-top: 90px;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: baseline;
+      gap: 15px;
+      margin-bottom: 35px;
+    }
+
+    .section-title small {
+      color: var(--blue);
+      font-weight: 800;
+    }
+
+    h2 {
+      font-size: clamp(32px, 4vw, 56px);
+      letter-spacing: -.06em;
+      line-height: 1.15;
+      margin: 0;
+    }
+
+    h3 {
+      margin: 8px 0;
+      font-size: 22px;
+      letter-spacing: -.03em;
+    }
+
+    .section-intro {
+      color: var(--muted);
+      max-width: 720px;
+      margin-bottom: 28px;
+    }
+
+    /* ABOUT AND SKILLS */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 55px;
+    }
+
+    .about-grid > p {
+      margin: 0;
+      font-size: 21px;
+      line-height: 1.5;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-content: start;
+    }
+
+    .skills span {
+      padding: 9px 12px;
+      font-size: 12px;
+      background: #e1ebee;
+      border: 1px solid #b5cdd7;
+      color: #315b6c;
+    }
+
+    /* PROJECTS */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 20px;
+    }
+
+    .project {
+      background: var(--white);
+      border: 1px solid var(--line);
+      overflow: hidden;
+    }
+
+    .project-img {
+      position: relative;
+      height: 250px;
+      overflow: hidden;
+      background: #cddfe5;
+      cursor: zoom-in;
+    }
+
+    .project-img img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .25s;
+    }
+
+    .project-img:hover img {
+      transform: scale(1.04);
+    }
+
+    .project-img::after {
+      content: "+";
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      padding: 3px 12px;
+      background: var(--navy);
+      color: white;
+      font-size: 24px;
+      pointer-events: none;
+    }
+
+    .project-body { padding: 24px; }
+
+    .project-body small {
+      color: var(--blue);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .12em;
+    }
+
+    .project-body p {
+      color: var(--muted);
+      font-size: 14px;
+      margin: 8px 0 0;
+    }
+
+    /* EXPERIENCE TIMELINE */
+    .timeline {
+      margin-left: 7px;
+      padding-left: 30px;
+      border-left: 2px solid #4d879f;
+    }
+
+    .timeline article {
+      position: relative;
+      padding-bottom: 38px;
+    }
+
+    .timeline article::before {
+      content: "";
+      position: absolute;
+      left: -38px;
+      top: 6px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--blue);
+      border: 2px solid var(--bg);
+    }
+
+    .timeline small {
+      color: var(--blue);
+      font-weight: 800;
+    }
+
+    .timeline strong {
+      display: block;
+      font-size: 13px;
+    }
+
+    .timeline p {
+      max-width: 720px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* RESUME AND AWARDS */
+    .resume-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .panel {
+      padding: 28px;
+      background: var(--white);
+      border: 1px solid var(--line);
+    }
+
+    .panel p { color: var(--muted); }
+
+    .awards {
+      list-style: none;
+      padding: 0;
+    }
+
+    .awards li {
+      padding: 12px 0;
+      border-top: 1px solid var(--line);
+      font-size: 14px;
+    }
+
+    .awards small {
+      display: block;
+      color: var(--blue);
+    }
+
+    /* CONTACT */
+    .contact {
+      margin: 60px 0;
+      padding: 55px;
+      background: var(--navy);
+      color: white;
+      scroll-margin-top: 90px;
+    }
+
+    .contact h2 {
+      font-size: clamp(35px, 6vw, 68px);
+    }
+
+    .contact p { color: #c3dce5; }
+
+    .contact .btn {
+      background: white;
+      color: var(--dark);
+      border-color: white;
+    }
+
+    .contact .btn.outline {
+      background: transparent;
+      color: white;
+    }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      padding: 25px 5%;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      font-size: 12px;
+    }
+
+    /* IMAGE LIGHTBOX */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: rgba(0,15,25,.95);
+      align-items: center;
+      justify-content: center;
+      padding: 35px;
+    }
+
+    .lightbox.open { display: flex; }
+
+    .lightbox img {
+      max-width: 95%;
+      max-height: 90vh;
+      object-fit: contain;
+    }
+
+    .close-lightbox {
+      position: absolute;
+      right: 25px;
+      top: 15px;
+      border: 0;
+      background: none;
+      color: white;
+      font-size: 35px;
+      cursor: pointer;
+    }
+
+    /* MOBILE */
+    @media(max-width: 800px) {
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        padding: 65px 0;
+      }
+
+      .blueprint { min-height: 300px; }
+
+      .about-grid,
+      .projects-grid,
+      .resume-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media(max-width: 530px) {
+      header { flex-wrap: wrap; }
+      nav { gap: 12px; font-size: 11px; }
+      h1 { font-size: 55px; }
+      section.content { padding: 50px 0; }
+      .contact { padding: 30px; }
+      footer { flex-wrap: wrap; }
+    }
+
+    @media(prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+  </style>
 </head>
+
 <body>
+
+  <!-- NAVIGATION -->
   <header>
-    <div class="wrap nav" aria-label="Main navigation">
-      <div class="brand">Keegan Usry</div>
-      <a class="tab" href="projects.html">Projects</a>
-      <a class="tab" href="skills.html">Skills & Experience</a>
-      <a class="tab" href="resume.html">Resume</a>
-    </div>
+    <a href="#top" class="brand">
+      KEEGAN USRY <span>/ ENG.</span>
+    </a>
+
+    <nav aria-label="Main navigation">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#resume">Resume</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </header>
 
-  <main>
-    <div class="wrap">
-      <section class="hero">
-        <div class="card">
-          <h1>Keegan Usry</h1>
-          <p class="muted">UCF Burnett Honors College • Mechanical Engineering Student • Orlando, FL</p>
-          <p>My mission is to make a meaningful impact on the world by creating innovative solutions that move
-            humanity forward. I strive to bring creative <strong>problem-solving</strong>, strong team <strong>leadership</strong>, 
-            and a commitment to <strong>continuous learning</strong> into every challenge I face. With a mindset that
-            embraces <strong>adaptability</strong> and a drive to quickly master new skills, I aim to contribute to projects
-            that push boundaries, inspire progress, and improve lives.</p>
-          <div class="badges">
-            <span class="badge">2D/3D CAD</span>
-            <span class="badge">DFM/DFA</span>
-            <span class="badge">MATLAB</span>
-            <span class="badge">C+</span>
-            <span class="badge">GD&T</span>
+  <main id="top">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div>
+        <div class="eyebrow">
+          Portfolio / Mechanical Engineering / 2026
+        </div>
+
+        <h1>
+          Design.<br>
+          Analyze.<br>
+          <span>Build.</span>
+        </h1>
+
+        <p>
+          Mechanical engineering student at the University
+          of Central Florida's Burnett Honors College.
+          I connect systems thinking, analytical design,
+          and hands-on manufacturing to solve practical
+          engineering challenges.
+        </p>
+
+        <div class="buttons">
+          <a class="btn" href="#projects">View Technical Work ↓</a>
+          <a class="btn outline" href="#contact">Contact ↗</a>
+        </div>
+      </div>
+
+      <div class="blueprint">
+        <div class="bp-top">
+          <span>FIG. 01 / ENGINEERING</span>
+          <span>REV A</span>
+        </div>
+
+        <div class="bp-center">
+          <strong>KU</strong>
+          <span>DESIGN / ANALYZE / BUILD</span>
+        </div>
+
+        <div class="bp-bottom">
+          <span>ORLANDO, FL</span>
+          <span>UCF / BURNETT HONORS</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="content">
+      <div class="section-title">
+        <small>01 //</small>
+        <h2>Engineering Capabilities</h2>
+      </div>
+
+      <div class="about-grid">
+        <p>
+          Engineering that connects detailed analysis
+          with making things work in the real world.
+          My experience spans systems engineering,
+          mechanical design, manufacturing,
+          simulation, and technical leadership.
+        </p>
+
+        <div class="skills">
+          <span>2D / 3D CAD</span>
+          <span>SolidWorks</span>
+          <span>AutoCAD</span>
+          <span>Autodesk Inventor</span>
+          <span>Autodesk Fusion</span>
+          <span>ANSYS / FEA / CFD</span>
+          <span>MATLAB</span>
+          <span>SysML / Cameo</span>
+          <span>IBM DOORS</span>
+          <span>Systems Engineering</span>
+          <span>GD&T / ASME Y14.5</span>
+          <span>DFM / DFA / DFT</span>
+          <span>DFMEA / PFMEA</span>
+          <span>Lean Manufacturing</span>
+          <span>Additive Manufacturing</span>
+          <span>Arduino</span>
+          <span>C / C++</span>
+          <span>Jira</span>
+          <span>Prototyping</span>
+          <span>Shop Fabrication</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="content">
+      <div class="section-title">
+        <small>02 //</small>
+        <h2>Project Documentation</h2>
+      </div>
+
+      <p class="section-intro">
+        Selected work across requirements engineering,
+        mechanical design, simulation, control systems,
+        and fabrication. Click any image to enlarge it.
+      </p>
+
+      <div class="projects-grid">
+
+        <article class="project">
+          <div class="project-img">
+            <img src="images/Philips_AI_Tool_Structure.png"
+                 alt="Philips AI Traceability Tool" loading="lazy">
           </div>
-          <p style="margin-top:14px;">
-         &nbsp;&nbsp;<a href="http://linkedin.com/in/k-usry" target="_blank" rel="noopener">LinkedIn</a>
-            &nbsp;•&nbsp;<a href="mailto:keegan.usry@outlook.com">Email</a>
-            &nbsp;•&nbsp;<a href="https://github.com/keeganusry" target="_blank" rel="noopener">GitHub</a>
+          <div class="project-body">
+            <small>01 / AI / REQUIREMENTS</small>
+            <h3>AI Traceability Tool — Philips</h3>
+            <p>
+              Co-developed an AI-powered tool identifying patterns
+              across 14,000+ requirement linkages to support
+              FDA traceability, with planned expansion to
+              DFMEA linkages.
+            </p>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="project-img">
+            <img src="images/WA23.jpeg"
+                 alt="Steel Component Design" loading="lazy">
+          </div>
+          <div class="project-body">
+            <small>02 / CAD / MANUFACTURING</small>
+            <h3>Steel Component Design</h3>
+            <p>
+              Designed a critical steel component from concept
+              through fabrication using 3D CAD, GD&T
+              per ASME Y14.5, and stress analysis.
+            </p>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="project-img">
+            <img src="images/BAR_FINAL.JPG"
+                 alt="Covered Patio Construction" loading="lazy">
+          </div>
+          <div class="project-body">
+            <small>03 / STRUCTURES / FABRICATION</small>
+            <h3>CAD Build & Project Management</h3>
+            <p>
+              Modeled a covered patio system, evaluated
+              structural loads and materials, and led
+              a 10-person construction team.
+            </p>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="project-img">
+            <img src="images/WIND_TUNNEL_VELOCITY.png"
+                 alt="ANSYS Wind Flow Simulation" loading="lazy">
+          </div>
+          <div class="project-body">
+            <small>04 / CFD / ANSYS</small>
+            <h3>Wind Flow Simulation</h3>
+            <p>
+              Simulated internal airflow through a tunnel
+              and analyzed velocity profiles, pressure
+              gradients, and structured mesh results.
+            </p>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="project-img">
+            <img src="images/IMG_2801.jpeg"
+                 alt="GNOR Autonomous Boat" loading="lazy">
+          </div>
+          <div class="project-body">
+            <small>05 / CONTROLS / ELECTROMECHANICAL</small>
+            <h3>GNOR Autonomous Boat</h3>
+            <p>
+              Engineered closed-loop heading control using
+              gyroscope feedback, with mechanical,
+              electrical, and hull integration.
+            </p>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="project-img">
+            <img src="images/deformation.jpeg"
+                 alt="Cantilever Beam Analysis" loading="lazy">
+          </div>
+          <div class="project-body">
+            <small>06 / FEA / VALIDATION</small>
+            <h3>Cantilever Beam Analysis</h3>
+            <p>
+              Simulated stress and deflection using
+              ANSYS APDL and validated the results
+              against analytical beam theory.
+            </p>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="project-img">
+            <img src="images/CATALYST_FINAL.jpg"
+                 alt="Load Bearing Wall Construction" loading="lazy">
+          </div>
+          <div class="project-body">
+            <small>07 / CONSTRUCTION / STRUCTURES</small>
+            <h3>Load-Bearing Wall Construction</h3>
+            <p>
+              Drafted construction plans, managed
+              a $1,000 budget, and collaborated
+              directly with the client to complete
+              a load-bearing wall.
+            </p>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="project-img">
+            <img src="images/CATAPULT.jpg"
+                 alt="Autonomous Maze Robot" loading="lazy">
+          </div>
+          <div class="project-body">
+            <small>08 / ROBOTICS / ARDUINO</small>
+            <h3>Autonomous Maze Robot</h3>
+            <p>
+              Developed a sensor-guided autonomous
+              robot featuring a 3D-printed catapult,
+              Arduino controls, and mechanical fabrication.
+            </p>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="project-img">
+            <img src="images/INDOOR_CADMODEL.jpg"
+                 alt="Indoor Bar CAD Project" loading="lazy">
+          </div>
+          <div class="project-body">
+            <small>09 / CAD / PROJECT MANAGEMENT</small>
+            <h3>Indoor Bar Project</h3>
+            <p>
+              Produced 2D CAD drawings, material
+              lists, and technical documentation
+              for a custom indoor bar installation.
+            </p>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="content">
+      <div class="section-title">
+        <small>03 //</small>
+        <h2>Professional Experience</h2>
+      </div>
+
+      <div class="timeline">
+
+        <article>
+          <small>JAN 2026 – JUL 2026</small>
+          <h3>Philips MRI Patient Monitoring</h3>
+          <strong>R&D Systems Engineer Co-op</strong>
+          <p>
+            Owned 1,500+ system requirements in IBM DOORS,
+            led 10 cross-functional FMEA meetings, and
+            modeled regulatory SpO2 subsystem architecture
+            using SysML in Cameo.
           </p>
+        </article>
+
+        <article>
+          <small>AUG 2025 – NOV 2025</small>
+          <h3>Daniels Manufacturing Corporation</h3>
+          <strong>Manufacturing Engineering Intern</strong>
+          <p>
+            Analyzed manufacturing processes for 20+
+            machined parts and developed 40+ Autodesk
+            Inventor designs while collaborating
+            with machinists on manufacturability.
+          </p>
+        </article>
+
+        <article>
+          <small>MAY 2025 – AUG 2025</small>
+          <h3>Daniels Manufacturing Corporation</h3>
+          <strong>Design Engineering Intern</strong>
+          <p>
+            Managed 45+ engineering change requests,
+            developed 30+ aerospace-grade CAD models,
+            and documented standard engineering
+            procedures and workflows.
+          </p>
+        </article>
+
+        <article>
+          <small>MAY 2023 – PRESENT</small>
+          <h3>Sandhurst Construction LLC</h3>
+          <strong>Founder, Owner & Managing Member</strong>
+          <p>
+            Founded and managed a construction business
+            serving 20+ clients, overseeing budgets,
+            procurement, scheduling, structural
+            redesign, and fabrication.
+          </p>
+        </article>
+
+        <article>
+          <small>JUN 2022 – 2025</small>
+          <h3>Varsity Tutors</h3>
+          <strong>Engineering & Math Tutor</strong>
+          <p>
+            Provided individualized instruction in
+            thermodynamics, differential equations,
+            statics, dynamics, and mathematics.
+          </p>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- RESUME -->
+    <section id="resume" class="content">
+      <div class="section-title">
+        <small>04 //</small>
+        <h2>Resume & Recognition</h2>
+      </div>
+
+      <div class="resume-grid">
+
+        <div class="panel">
+          <div class="eyebrow">CURRENT DOCUMENT / PDF</div>
+          <h3>Engineering Resume</h3>
+          <p>
+            Review my professional experience,
+            technical skills, engineering projects,
+            and academic background.
+          </p>
+
+          <div class="buttons">
+            <a class="btn" href="images/Resume.pdf"
+               target="_blank" rel="noopener">
+              Open Resume ↗
+            </a>
+            <a class="btn outline"
+               href="images/Resume.pdf" download>
+              Download PDF ↓
+            </a>
+          </div>
         </div>
-        <div class="card center">
-          <img class="avatar" src="imageS/Keegan-Headshot.jpeg" alt="Portrait of Keegan Usry">
+
+        <div class="panel">
+          <div class="eyebrow">SELECTED RECOGNITION</div>
+          <h3>Awards & Honors</h3>
+
+          <ul class="awards">
+            <li>
+              Walt Disney World and Co. Design and
+              Engineering Endowed Scholarship
+              <small>2025</small>
+            </li>
+            <li>
+              ASHRAE Engineering Alumni Scholarship
+              <small>2025</small>
+            </li>
+            <li>
+              Dean's List
+              <small>2023, 2025</small>
+            </li>
+            <li>
+              Pegasus Award
+              <small>2023, 2024, 2025</small>
+            </li>
+          </ul>
         </div>
-      </section>
-    </div>
+
+      </div>
+
+      <p style="margin-top:25px;">
+        View additional engineering documentation:
+        <a href="images/Portfolio.pdf" target="_blank"
+           rel="noopener" style="text-decoration:underline;">
+          Full Project Portfolio ↗
+        </a>
+      </p>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+      <div class="eyebrow" style="color:#c9e5ed;">
+        05 // COLLABORATE
+      </div>
+
+      <h2>Ready for what's next.</h2>
+
+      <p>
+        Reach out to discuss engineering opportunities,
+        technical projects, or collaborations.
+      </p>
+
+      <div class="buttons">
+        <a class="btn"
+           href="mailto:keegan.usry@outlook.com">
+          Email ↗
+        </a>
+
+        <a class="btn outline"
+           href="https://www.linkedin.com/in/k-usry"
+           target="_blank" rel="noopener">
+          LinkedIn ↗
+        </a>
+
+        <a class="btn outline"
+           href="https://github.com/keeganusry"
+           target="_blank" rel="noopener">
+          GitHub ↗
+        </a>
+      </div>
+    </section>
+
   </main>
 
-  <footer><div class="wrap">© <span id="y"></span> Keegan Usry.</div></footer>
-  <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+  <!-- IMAGE PREVIEW -->
+  <div id="lightbox" class="lightbox"
+       role="dialog" aria-label="Project image preview">
+    <button class="close-lightbox"
+            aria-label="Close preview">×</button>
+    <img id="lightbox-image" src="" alt="">
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <span>© <span id="year"></span> Keegan Usry</span>
+    <span>Mechanical Engineering / Orlando, FL</span>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImage =
+      document.getElementById("lightbox-image");
+
+    document.querySelectorAll(".project-img img")
+      .forEach(img => {
+        img.setAttribute("tabindex", "0");
+        img.setAttribute("role", "button");
+
+        function openImage() {
+          lightboxImage.src = img.src;
+          lightboxImage.alt = img.alt;
+          lightbox.classList.add("open");
+          document.body.style.overflow = "hidden";
+          lightbox.querySelector("button").focus();
+        }
+
+        img.addEventListener("click", openImage);
+        img.addEventListener("keydown", e => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            openImage();
+          }
+        });
+      });
+
+    function closeImage() {
+      lightbox.classList.remove("open");
+      lightboxImage.removeAttribute("src");
+      document.body.style.overflow = "";
+    }
+
+    document.querySelector(".close-lightbox")
+      .addEventListener("click", closeImage);
+
+    lightbox.addEventListener("click", e => {
+      if (e.target === lightbox) closeImage();
+    });
+
+    document.addEventListener("keydown", e => {
+      if (e.key === "Escape") closeImage();
+    });
+  </script>
+
 </body>
 </html>
